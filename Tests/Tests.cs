@@ -1,5 +1,7 @@
 using System;
+using System.Reflection;
 using Godot;
+using Xunit.Runners;
 
 namespace Ship_Project.Tests {
     public class Tests : Control
@@ -17,10 +19,32 @@ namespace Ship_Project.Tests {
         {
             try
             {
-                GD.Print("Running ActorSystem tests");
-                var actorSystemTests = new ActorSystemTests();
-                actorSystemTests.SetWorldConnectsActorSystemToWorld();
-                GD.Print("ActorSystem tests Completed");
+                GD.Print("Tests starting");
+                AssemblyRunner runner = Xunit.Runners.AssemblyRunner.WithoutAppDomain(Assembly.GetExecutingAssembly().Location);
+                runner.OnTestStarting = info =>
+                {
+                    GD.Print($"Running {info.TestDisplayName}");
+                };
+                runner.OnTestPassed = info =>
+                {
+                    GD.Print($"{info.TestDisplayName} passed");
+                };
+                runner.OnTestFailed = info =>
+                {
+                    GD.Print($"{info.TestDisplayName} failed");
+                };
+                runner.OnTestOutput = info =>
+                {
+                    GD.Print($"{info.TestDisplayName}: {info.Output}");
+                };
+                runner.OnExecutionComplete = info =>
+                {
+                    GD.Print($"Tests completed in {info.ExecutionTime}");
+                    GD.Print($"Total tests: {info.TotalTests}");
+                    GD.Print($"Failed tests: {info.TestsFailed}");
+                    GD.Print($"Skipped tests: {info.TestsSkipped}");
+                };
+                runner.Start();
             }
             catch (Exception e)
             {
