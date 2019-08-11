@@ -1,0 +1,77 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Resource",
+"class": "BaseGameObject",
+"language": "GDScript",
+"path": "res://addons/gcs/baseGameObject.gd"
+}, {
+"base": "Resource",
+"class": "BaseGameSystem",
+"language": "GDScript",
+"path": "res://addons/gcs/baseGameSystem.gd"
+}, {
+"base": "Resource",
+"class": "BaseGameWorld",
+"language": "GDScript",
+"path": "res://addons/gcs/baseGameWorld.gd"
+}, {
+"base": "Resource",
+"class": "Component",
+"language": "GDScript",
+"path": "res://addons/gcs/component.gd"
+}, {
+"base": "BaseGameObject",
+"class": "GameObject",
+"language": "GDScript",
+"path": "res://addons/gcs/gameObject.gd"
+}, {
+"base": "BaseGameSystem",
+"class": "GameSystem",
+"language": "GDScript",
+"path": "res://addons/gcs/gameSystem.gd"
+}, {
+"base": "BaseGameWorld",
+"class": "GameWorld",
+"language": "GDScript",
+"path": "res://addons/gcs/gameWorld.gd"
+}, {
+"base": "GameSystem",
+"class": "MovementSystem",
+"language": "GDScript",
+"path": "res://scripts/systems/movement.gd"
+}, {
+"base": "Component",
+"class": "PositionComponent",
+"language": "GDScript",
+"path": "res://scripts/components/position.gd"
+} ]
+_global_script_class_icons={
+"BaseGameObject": "",
+"BaseGameSystem": "",
+"BaseGameWorld": "",
+"Component": "",
+"GameObject": "",
+"GameSystem": "",
+"GameWorld": "",
+"MovementSystem": "",
+"PositionComponent": ""
+}
+
+[application]
+
+config/name="Ship_Project"
+run/main_scene="res://Tests/Tests.tscn"
+config/icon="res://icon.png"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
